@@ -18,4 +18,6 @@ For the application I have made two WebSecurityConfiguration. Both will create a
 To select one over the other, edit the @Order
 
 The CustomAuthenticationConfiguration uses a custom filter and authentication object, where the 
-FormLoginWebSecurityConfiguration uses standard spring filter UsernamePasswordAuthenticationFilter
+FormLoginWebSecurityConfiguration uses standard spring filter UsernamePasswordAuthenticationFilter. For implementation 
+only a UserDetailsService is injected via the configuration. Authentication is handled in a default Spring provider 
+using this service.
