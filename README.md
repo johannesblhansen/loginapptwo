@@ -3,6 +3,8 @@ The application builds on a hsqldb in file mode.
 To start that db, use following command: 
 java -classpath hsqldb.jar org.hsqldb.server.Server --database.0 file:hsqldb/demodb --dbname.0 testdb
 
+Remember to solve this after creating the datasource programmatically
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization
 
 -- SECURITY
 The security is configured using a WebSecurityConfiguration.

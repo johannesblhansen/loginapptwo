@@ -19,22 +19,27 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity(debug = true)
-@Order(2)
-public class FormLoginWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Order(1)
+public class FormLoginWebSecurityWithInMemoryAuthConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.inMemoryAuthentication()
+                .withUser("johannes")
+                .password(encoder.encode("123"))
+                .roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/createuser").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin();
