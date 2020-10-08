@@ -23,6 +23,6 @@ public class JohannesDefaultAuthentication extends AbstractAuthenticationToken {
 
     @Override
     public Object getPrincipal() {
-        return getPrincipal();
+        return principal;
     }
 }
